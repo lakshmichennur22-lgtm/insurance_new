@@ -14,7 +14,7 @@ COPY . .
 # Build the app (API base can be set at build time)
 ARG REACT_APP_API_BASE
 ENV REACT_APP_API_BASE=$REACT_APP_API_BASE
-RUN npm run build
+RUN npm run dev
 
 
 # ---------- Stage 2: Serve with Nginx ----------
