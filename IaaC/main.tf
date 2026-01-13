@@ -201,7 +201,7 @@ resource "aws_lb_target_group" "backend_tg" {
 
   health_check {
     path                = "/api/policies/health"
-    matcher             = "200"
+    matcher             = "200-399"
     interval            = 30
   }
 }
