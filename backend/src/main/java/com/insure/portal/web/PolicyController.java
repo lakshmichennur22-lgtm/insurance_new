@@ -23,7 +23,10 @@ public class PolicyController {
     public Policy one(@PathVariable Long id) {
         return repo.findById(id).orElseThrow();
     }
-
+    @GetMapping("/health")
+    public String health() {
+        return "OK";
+    }
     @PostConstruct
     public void seed() {
         if (repo.count() == 0) {
