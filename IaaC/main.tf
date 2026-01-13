@@ -158,7 +158,7 @@ resource "aws_lb" "alb" {
 
 resource "aws_lb_target_group" "frontend_tg" {
   name     = "${local.name_prefix}-frontend-tg"
-  port     = 3000
+  port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
   target_type = "ip"
@@ -243,7 +243,7 @@ resource "aws_ecs_task_definition" "frontend" {
       image     = var.frontend_image
       essential = true
       portMappings = [{
-        containerPort = 3000
+        containerPort = 80
         protocol      = "tcp"
       }]
     }
@@ -266,7 +266,7 @@ resource "aws_ecs_service" "frontend" {
   load_balancer {
     target_group_arn = aws_lb_target_group.frontend_tg.arn
     container_name   = "frontend"
-    container_port   = 3000
+    container_port   = 80
   }
 }
 
